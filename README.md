@@ -57,10 +57,13 @@ you most likely don't have SVG pixbuf loaders installed (package librsvg2-common
 
 * .NET 4.0 Framework or higher
 * Gtk# for .NET (http://www.go-mono.com/mono-downloads/download.html)
-* System.Data.SQLite (http://system.data.sqlite.org/index.html/doc/trunk/www/downloads.wiki)
-* taglib-sharp (https://github.com/mono/taglib-sharp)
-* SharpZipLib (http://www.icsharpcode.net/OpenSource/SharpZipLib/Default.aspx)
+
+The following instructions only apply for Gtk# 2.12.45 and may change in the future:
+* Download the [gtk+-bundle](http://win32builder.gnome.org/gtk+-bundle_3.6.4-20130921_win32.zip) ([soruce](https://github.com/mono/gtk-sharp/blob/master/msi/unmanaged/downloads.win32))
+* extract `lib/gdk-pixbuf-2.0` into `%ProgramFiles(x86)%\GtkSharp\2.12\lib` (check if you have this file after: `%ProgramFiles(x86)%\GtkSharp\2.12\lib\gdk-pixbuf-2.0\2.10.0\loaders\libpixbufloader-svg.dll`)
+* in an admin console run the following command:
+  * `"%ProgramFiles(x86)%\GtkSharp\2.12\bin\gdk-pixbuf-query-loaders.exe" > "%ProgramFiles(x86)%\GtkSharp\2.12\lib\gdk-pixbuf-2.0\2.10.0\loaders.cache"`
 	
 ###### Compile
 
-Open Basenji_win32.sln in Visual Studio 2012.
+Open Basenji_win32.sln in Visual Studio 2017.

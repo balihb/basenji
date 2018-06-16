@@ -84,12 +84,14 @@ namespace Basenji.Icons
 				Gtk.IconTheme iconTheme = Gtk.IconTheme.Default;
 				string iconName = null;
 
+#if UNIX
 				foreach (string name in ((GLib.ThemedIcon)GLib.Content.TypeGetIcon(mimeType)).Names) {
 					if (iconTheme.HasIcon(name)) {
 						iconName = name;
 						break;
 					}
 				}
+#endif // UNIX
 
 				if (!string.IsNullOrEmpty(iconName)) {
 					pb = iconTheme.LoadIcon(iconName, IconUtils.GetIconSizeVal(size), 0);

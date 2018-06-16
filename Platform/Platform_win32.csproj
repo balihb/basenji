@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -44,6 +44,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -52,6 +53,25 @@
     <DefineConstants>TRACE;WIN32</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WIN32</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;WIN32</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -80,15 +100,10 @@
     <Compile Include="src\Common\IO\DriveType.cs" />
     <Compile Include="src\Common\IO\FileHelper.cs" />
     <Compile Include="src\Common\IO\IDriveInfoProvider.cs" />
-    <Compile Include="src\Common\Mime\MimeIconLookup.cs" />
     <Compile Include="src\Common\Mime\MimeType.cs" />
     <Compile Include="src\Common\ThumbnailGenerator.cs" />
-    <Compile Include="src\Gnome\GnomeDesktop\DesktopThumbnailFactory.cs" />
-    <Compile Include="src\Gnome\GnomeDesktop\DesktopThumbnailSize.cs" />
-    <Compile Include="src\Gnome\IO\GioDriveInfoProvider.cs" />
     <Compile Include="src\Gnome\ThumbnailGenerator.cs" />
-    <Compile Include="src\Unix\IO\DkDisk.cs" />
-    <Compile Include="src\Unix\IO\DkDriveInfoProvider.cs" />
+    <Compile Include="src\Unix\IO\GioDriveInfoProvider.cs" />
     <Compile Include="src\Unix\IO\UnixFileHelper.cs" />
     <Compile Include="src\Unix\Mime\Mime.cs" />
     <Compile Include="src\Win32\IO\AudioCdWin32.cs" />
@@ -113,5 +128,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\Gnome\GnomeDesktop\" />
+    <Folder Include="src\Gnome\IO\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
 </Project>

@@ -7,3 +7,7 @@ VolumeDB/bin
 *.userprefs
 *.usertasks
 *.*~
+.*
+*/obj
+packages
+*.csproj.user

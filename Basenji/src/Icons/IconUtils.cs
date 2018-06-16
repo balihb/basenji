@@ -26,9 +26,27 @@ namespace Basenji.Icons
 	public static class IconUtils
 	{
 		public static int GetIconSizeVal(IconSize size) {
+#if UNIX
 			int w, h;
 			Gtk.Icon.SizeLookup(size, out w, out h);
 			return w;
+#else
+			// workaround for GtkSharp on Windows
+			switch (size) {
+				case IconSize.Menu:
+					return 16;
+				case IconSize.LargeToolbar:
+					return 24;
+				case IconSize.Button:
+					return 24;
+				case IconSize.Dialog:
+					return 48;
+				default:
+					int w, h;
+					Gtk.Icon.SizeLookup(size, out w, out h);
+					return w;
+			}
+#endif
 		}
 		
 		// keep in sync with VolumeView.GetVolumeIcon()
