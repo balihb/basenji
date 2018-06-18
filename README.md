@@ -63,7 +63,11 @@ The following instructions only apply for Gtk# 2.12.45 and may change in the fut
 * extract `lib/gdk-pixbuf-2.0` into `%ProgramFiles(x86)%\GtkSharp\2.12\lib` (check if you have this file after: `%ProgramFiles(x86)%\GtkSharp\2.12\lib\gdk-pixbuf-2.0\2.10.0\loaders\libpixbufloader-svg.dll`)
 * in an admin console run the following command:
   * `"%ProgramFiles(x86)%\GtkSharp\2.12\bin\gdk-pixbuf-query-loaders.exe" > "%ProgramFiles(x86)%\GtkSharp\2.12\lib\gdk-pixbuf-2.0\2.10.0\loaders.cache"`
-	
+
+The latest NuGet package for taglib-sharp is broken, so it must be compiled from source:
+* clone the latest [taglib-spharp](https://github.com/mono/taglib-sharp) source code into the same directory where you cloned Basenji (Basendji uses a relative link to the dll)
+* open the solution in Visual Studio and do a Release build
+
 ###### Compile
 
 Open Basenji_win32.sln in Visual Studio 2017.
